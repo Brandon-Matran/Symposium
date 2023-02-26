@@ -28,7 +28,12 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["localhost", "monolith"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "monolith",
+    "http://localhost:3000",
+    "http://localhost:3001",
+]
 
 
 # Override the basic User model with a custom User model
@@ -43,6 +48,7 @@ INSTALLED_APPS = [
     "events.apps.EventsConfig",
     "presentations.apps.PresentationsConfig",
     "corsheaders",
+    "djwto",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -61,9 +67,17 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+DJWTO_MODE = "TWO-COOKIES"
+
+DJWTO_ACCESS_TOKEN_LIFETIME = None
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
+    "http://localhost:8000",
+     "http://localhost:3001",
 ]
+
+CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = "conference_go.urls"
 
